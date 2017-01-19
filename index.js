@@ -37,6 +37,8 @@ class UserAvatar extends Component {
 
     if (!name) throw new Error('Avatar requires a name');
 
+    if(typeof size !== 'number') size = parseInt(size);
+
     const abbr = initials(name);
 
     const borderRadius = size * 0.5;
