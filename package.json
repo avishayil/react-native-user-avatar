@@ -1,0 +1,19 @@
+{
+  "name": "react-native-user-avatar",
+  "version": "1.0.0",
+  "description": "React Native component for a user avatar with fallback to colored initials",
+  "main": "index.js",
+  "keywords": [
+    "react-native",
+    "react-native-component",
+    "avatar",
+    "initials"
+  ],
+  "author": "Avishay Bar <avishay.il@gmail.com>",
+  "license": "MIT",
+  "repository": "github:avishayil/react-native-user-avatar",
+  "dependencies": {
+    "contrast": "^1.0.1",
+    "initials": "^2.1.5"
+  }
+}
