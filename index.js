@@ -26,7 +26,6 @@ function sumChars(str) {
 class UserAvatar extends Component {
   render() {
     let {
-      borderRadius = 50,
       src,
       name,
       color,
@@ -39,6 +38,8 @@ class UserAvatar extends Component {
     if (!name) throw new Error('Avatar requires a name');
 
     const abbr = initials(name);
+
+    const borderRadius = size * 0.5;
 
     const imageStyle = {
       borderRadius
