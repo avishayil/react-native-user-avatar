@@ -33,13 +33,15 @@ class UserAvatar extends Component {
       colors = defaultColors,
       size,
       style,
+      defaultName,
     } = this.props;
 
     if (!name) throw new Error('Avatar requires a name');
 
     if(typeof size !== 'number') size = parseInt(size);
 
-    const abbr = initials(name);
+    let abbr = initials(name);
+    if(!abbr) abbr = defaultName;
 
     const borderRadius = size * 0.5;
 
