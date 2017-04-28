@@ -22,6 +22,14 @@ Based on the great library for React: https://github.com/wbinnssmith/react-user-
   <UserAvatar size="50" name="Jane Doe" color="#000" />
 ```
 
+## User-defined Image-Component
+
+It is also possible to use another Image-Component than the built-in `<Image>`.
+
+```js
+  <UserAvatar size="50" name="John Doe" component={CachedImage} />
+```
+
 The fallback avatar's color may be set by passing in the `color` prop, or you can customize the range of colors
 used by passing in an array of `colors`. The component uses a simple calculation to consistently use the same
 color for the same user's name every time.

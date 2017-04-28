@@ -64,7 +64,14 @@ class UserAvatar extends Component {
 
     let inner, classes;
     if (src) {
-      inner = <Image style={imageStyle} source={{ uri: src }} />
+      
+      const props = {
+        style: imageStyle,
+        source: {uri: src}
+      }
+      
+      inner = React.createElement( this.props.component || Image, props )
+
     } else {
       let background;
       if (color) {
