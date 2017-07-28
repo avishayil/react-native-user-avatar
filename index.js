@@ -31,11 +31,14 @@ class UserAvatar extends Component {
       color,
       textColor = '#fff',
       colors = defaultColors,
+      fontDecrease,
       size,
       style,
       defaultName,
     } = this.props;
-
+    
+    if (!fontDecrease) fontDecrease = 2.5;
+    
     if (!name) throw new Error('Avatar requires a name');
 
     if(typeof size !== 'number') size = parseInt(size);
@@ -77,7 +80,7 @@ class UserAvatar extends Component {
 
       innerStyle.backgroundColor = background;
 
-      inner = <Text style={{ fontSize: size / 2.5, color: textColor }}>{abbr}</Text>
+      inner = <Text style={{ fontSize: size / fontDecrease, color: textColor }}>{abbr}</Text>
     }
 
     return (
