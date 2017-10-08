@@ -35,10 +35,11 @@ class UserAvatar extends Component {
       size,
       style,
       defaultName,
+      radius = 0.5
     } = this.props;
-    
+
     if (!fontDecrease) fontDecrease = 2.5;
-    
+
     if (!name) throw new Error('Avatar requires a name');
 
     if(typeof size !== 'number') size = parseInt(size);
@@ -46,7 +47,9 @@ class UserAvatar extends Component {
     let abbr = initials(name);
     if(!abbr) abbr = defaultName;
 
-    const borderRadius = size * 0.5;
+    if(isNaN(radius)) radius = 0.5
+
+    const borderRadius = size * radius;
 
     const imageStyle = {
       borderRadius
@@ -67,12 +70,12 @@ class UserAvatar extends Component {
 
     let inner, classes;
     if (src) {
-      
+
       const props = {
         style: imageStyle,
         source: {uri: src}
       }
-      
+
       inner = React.createElement( this.props.component || Image, props )
 
     } else {
