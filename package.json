@@ -13,7 +13,6 @@
   "license": "MIT",
   "repository": "github:avishayil/react-native-user-avatar",
   "dependencies": {
-    "contrast": "^1.0.1",
     "initials": "^2.1.5"
   }
 }
