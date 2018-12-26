@@ -72,7 +72,7 @@ class UserAvatar extends React.PureComponent {
     if (src) {
 
       const props = {
-        style: {...imageLocalStyle, ...imageStyle},
+        style: [imageLocalStyle, imageStyle],
         source: {uri: src}
       }
 
