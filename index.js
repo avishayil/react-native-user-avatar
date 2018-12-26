@@ -32,7 +32,8 @@ class UserAvatar extends React.PureComponent {
       colors = defaultColors,
       fontDecrease,
       size,
-      style,
+      containerStyle,
+      imageStyle,
       defaultName,
       radius = 0.5
     } = this.props;
@@ -50,7 +51,7 @@ class UserAvatar extends React.PureComponent {
 
     const borderRadius = size * radius;
 
-    const imageStyle = {
+    const imageLocalStyle = {
       borderRadius
     };
 
@@ -63,15 +64,15 @@ class UserAvatar extends React.PureComponent {
     };
 
     if (size) {
-      imageStyle.width = innerStyle.width = size;
-      imageStyle.height = innerStyle.height = size;
+      imageLocalStyle.width = innerStyle.width = size;
+      imageLocalStyle.height = innerStyle.height = size;
     }
 
     let inner;
     if (src) {
 
       const props = {
-        style: imageStyle,
+        style: {...imageLocalStyle, ...imageStyle},
         source: {uri: src}
       }
 
@@ -94,7 +95,7 @@ class UserAvatar extends React.PureComponent {
 
     return (
       <View>
-        <View style={[innerStyle, style]}>
+        <View style={[innerStyle, containerStyle]}>
           {inner}
         </View>
       </View>
