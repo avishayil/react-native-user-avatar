@@ -2,6 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/react-native-user-avatar.svg?style=flat-square)](https://www.npmjs.com/package/react-native-user-avatar)
 [![npm downloads](https://img.shields.io/npm/dm/react-native-user-avatar.svg?style=flat-square)](https://www.npmjs.com/package/react-native-user-avatar)
+[![Build Status](https://travis-ci.org/avishayil/react-native-user-avatar.svg?branch=master)](https://travis-ci.org/avishayil/react-native-user-avatar)
 
 A bare-bones user avatar display with support for falling back to using the user's initials on a colored background as the avatar.
 Based on the great library for React: https://github.com/wbinnssmith/react-user-avatar, and ported to React Native.
