@@ -45,7 +45,7 @@ class UserAvatar extends React.PureComponent {
     if(typeof size !== 'number') size = parseInt(size);
 
     let abbr = initials(name);
-    
+
     if (name.startsWith('+')) {
       abbr = `+${abbr}`
     }
@@ -95,7 +95,16 @@ class UserAvatar extends React.PureComponent {
 
       innerStyle.backgroundColor = background;
 
-      inner = <Text style={{ fontSize: size / fontDecrease, color: textColor }}>{abbr}</Text>
+      inner = (
+        <Text
+          style={{
+            fontSize: size / fontDecrease,
+            color: textColor
+          }}
+          maxFontSizeMultiplier={1}>
+          {abbr}
+        </Text>
+      );
     }
 
     return (
