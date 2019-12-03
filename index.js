@@ -35,6 +35,7 @@ class UserAvatar extends React.PureComponent {
       containerStyle,
       imageStyle,
       defaultName,
+      borderRadius
     } = this.props;
 
     if (!fontDecrease) fontDecrease = 2.5;
