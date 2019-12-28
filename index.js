@@ -34,7 +34,7 @@ class UserAvatar extends React.PureComponent {
       containerStyle,
       imageStyle,
       defaultName,
-      radius = 0.5,
+      borderRadius
     } = this.props;
     if (!name) throw new Error('Avatar requires a name');
     if (typeof size !== 'number') size = parseInt(size);
@@ -42,11 +42,12 @@ class UserAvatar extends React.PureComponent {
     if (name.startsWith('+')) {
       abbr = `+${abbr}`;
     }
-    if (!abbr) abbr = defaultName;
-    if (isNaN(radius)) radius = 0.5;
-    const borderRadius = size * radius;
+    if(!abbr) abbr = defaultName;
+    if (isNaN(borderRadius)) {
+      borderRadius = size * 0.5;
+    }
     const imageLocalStyle = {
-      borderRadius,
+      borderRadius
     };
     const localStyle = {
       borderRadius,
@@ -64,7 +65,7 @@ class UserAvatar extends React.PureComponent {
       };
       const props = {
         style: [imageLocalStyle, sizeStyle, imageStyle],
-        source: { uri: src },
+        source: { uri: src }
       };
       inner = React.createElement(this.props.component || Image, props);
     } else {
