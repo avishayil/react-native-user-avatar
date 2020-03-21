@@ -65,7 +65,7 @@ class UserAvatar extends React.PureComponent {
       };
       const props = {
         style: [imageLocalStyle, sizeStyle, imageStyle],
-        source: { uri: src }
+        source: typeof src === 'number' ? src : { uri: src }
       };
       inner = React.createElement(this.props.component || Image, props);
     } else {
