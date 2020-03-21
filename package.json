@@ -1,6 +1,6 @@
 {
   "name": "@sigmayun/react-native-user-avatar",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "React Native component for a user avatar with fallback to colored initials",
   "main": "index.js",
   "types": "index.d.ts",
