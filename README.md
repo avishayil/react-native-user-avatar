@@ -11,12 +11,12 @@ Based on the great library for React: https://github.com/wbinnssmith/react-user-
 
 ## Installation
 
-`npm install --save react-native-user-avatar` or `yarn add react-native-user-avatar`
+`npm install --save @sigmayun/react-native-user-avatar` or `yarn add @sigmayun/react-native-user-avatar`
 
 ## Usage
 
 ```jsx
-import UserAvatar from 'react-native-user-avatar';
+import UserAvatar from '@sigmayun/react-native-user-avatar';
 
 
 <UserAvatar size="100" name="Avishay Bar" />
@@ -24,6 +24,7 @@ import UserAvatar from 'react-native-user-avatar';
 <UserAvatar size="50" name="John Doe" colors={['#ccc', '#fafafa', '#ccaabb']}/>
 <UserAvatar size="50" name="John Doe" />
 <UserAvatar size="50" name="Jane Doe" color="#000" />
+<AvatarView uri={require('./avatar.png')} name="Aaron" size={50} />
 ```
 
 ## User-defined Image-Component
