@@ -42,7 +42,7 @@ class UserAvatar extends React.PureComponent {
     if (name.startsWith('+')) {
       abbr = `+${abbr}`;
     }
-    if(!abbr) abbr = defaultName;
+    if (!abbr) abbr = defaultName;
     if (isNaN(borderRadius)) {
       borderRadius = size * 0.5;
     }
@@ -56,6 +56,10 @@ class UserAvatar extends React.PureComponent {
       justifyContent: 'center',
       alignItems: 'center',
     };
+    if (size) {
+      imageLocalStyle.width = localStyle.width = size
+      imageLocalStyle.height = localStyle.height = size
+    }
     let colorStyle = {};
     let inner;
     if (src) {
