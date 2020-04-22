@@ -22,5 +22,10 @@
         "react"
     ],
     "rules": {
+    },
+    "settings": {
+        "react": {
+            "version": "latest"
+        }
     }
 }
