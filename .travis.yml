@@ -1,20 +1,26 @@
-language: android
 jdk: oraclejdk8
-before_install:
-- nvm install 8
-- node --version
-install:
-- cd Example
-- npm install
+language: android
+sudo: false
+
 android:
   components:
-  - build-tools-23.0.1
-  - build-tools-26.0.3
-  - android-26
-  - android-23
-  - extra-android-m2repository
-  - extra-google-google_play_services
-  - extra-google-m2repository
-  - addon-google_apis-google-16
+    - tools
+    - platform-tools
+    - build-tools-28.0.3
+    - android-28
+    - extra-google-m2repository
+
+before_install:
+  - nvm install 8
+  - node --version
+  - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  - sudo apt-get update -qq
+  - sudo apt-get install -y -qq --no-install-recommends yarn
+
+install:
+  - cd Examples && cd RNExample
+  - yarn
+
 script:
-- cd android && ./gradlew assembleRelease
+  - cd android && ./gradlew assembleRelease
