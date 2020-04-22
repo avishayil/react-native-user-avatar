@@ -12,7 +12,6 @@ import initials from 'initials';
   return abbr;
 }
 
-
 function sumChars(str) {
   let sum = 0;
   for (let i = 0; i < str.length; i++) {
