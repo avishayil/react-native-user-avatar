@@ -45,7 +45,6 @@ class UserAvatar extends React.PureComponent {
       textColor = '#fff',
       colors = defaultColors,
       size = 32,
-      containerStyle,
       imageStyle,
       defaultName,
       borderRadius,
@@ -70,6 +69,10 @@ class UserAvatar extends React.PureComponent {
       borderColor: 'transparent',
       justifyContent: 'center',
       alignItems: 'center',
+    };
+    const containerStyle = {
+      height: size,
+      width: size,
     };
     let colorStyle = {};
     let inner;
@@ -97,20 +100,20 @@ class UserAvatar extends React.PureComponent {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: -(size / 20),
       };
-      // TODO if i set this style to height instead of minHeight
-      const minSizeStyle = {
-        minHeight: size,
-        minWidth: size,
+      const sizeStyle = {
+        height: size,
+        width: size,
       };
       inner = (
-        <View style={[textContainerStyle, minSizeStyle]}>
+        <View style={[textContainerStyle, sizeStyle]}>
           <Text
             style={{
               color: textColor,
+              fontSize: size / 2.5,
             }}
             adjustsFontSizeToFit={true}
-            maxFontSizeMultiplier={1}
           >
             {abbr}
           </Text>
