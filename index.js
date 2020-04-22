@@ -50,7 +50,7 @@ class UserAvatar extends React.PureComponent {
       borderRadius,
       style,
     } = this.props;
-    if (!name) throw new Error('Avatar requires a name');
+    if (!name && !src) throw new Error('Avatar requires a name or source');
     if (typeof size !== 'number') size = parseInt(size);
     let abbr = initials(name);
     if (name.startsWith('+')) {
