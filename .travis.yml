@@ -19,7 +19,7 @@ before_install:
   - sudo apt-get install -y -qq --no-install-recommends yarn
 
 install:
-  - cd Example && cd RNExample
+  - cd Examples && cd RNExample
   - yarn
 
 script:
