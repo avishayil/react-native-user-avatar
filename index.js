@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Image, Text } from 'react-native';
+import PropTypes from 'prop-types';
+import {View, Image, Text} from 'react-native';
 import initials from 'initials';
 
 // from https://flatuicolors.com/
@@ -13,6 +14,11 @@ const defaultColors = [
   '#2c3e50', // midnight blue
 ];
 
+/**
+ * Helper function to calculate the number of characters
+ * @constructor
+ * @param {string} str - The string we want to ab.
+ */
 function sumChars(str) {
   let sum = 0;
   for (let i = 0; i < str.length; i++) {
@@ -22,7 +28,15 @@ function sumChars(str) {
   return sum;
 }
 
+/**
+ * Main Class
+ * @constructor
+ */
 class UserAvatar extends React.PureComponent {
+  /**
+   * Render function
+   * @constructor
+   */
   render() {
     let {
       src,
@@ -31,10 +45,10 @@ class UserAvatar extends React.PureComponent {
       textColor = '#fff',
       colors = defaultColors,
       size = 32,
-      containerStyle,
       imageStyle,
       defaultName,
-      borderRadius
+      borderRadius,
+      style,
     } = this.props;
     if (!name) throw new Error('Avatar requires a name');
     if (typeof size !== 'number') size = parseInt(size);
@@ -42,12 +56,12 @@ class UserAvatar extends React.PureComponent {
     if (name.startsWith('+')) {
       abbr = `+${abbr}`;
     }
-    if(!abbr) abbr = defaultName;
+    if (!abbr) abbr = defaultName;
     if (isNaN(borderRadius)) {
       borderRadius = size * 0.5;
     }
     const imageLocalStyle = {
-      borderRadius
+      borderRadius,
     };
     const localStyle = {
       borderRadius,
@@ -55,6 +69,10 @@ class UserAvatar extends React.PureComponent {
       borderColor: 'transparent',
       justifyContent: 'center',
       alignItems: 'center',
+    };
+    const containerStyle = {
+      height: size,
+      width: size,
     };
     let colorStyle = {};
     let inner;
@@ -65,7 +83,7 @@ class UserAvatar extends React.PureComponent {
       };
       const props = {
         style: [imageLocalStyle, sizeStyle, imageStyle],
-        source: { uri: src }
+        source: {uri: src},
       };
       inner = React.createElement(this.props.component || Image, props);
     } else {
@@ -73,29 +91,29 @@ class UserAvatar extends React.PureComponent {
       if (color) {
         background = color;
       } else {
-        // pick a deterministic color from the list
-        let i = sumChars(name) % colors.length;
+        // Pick a deterministic color from the list
+        const i = sumChars(name) % colors.length;
         background = colors[i];
       }
-      colorStyle = { backgroundColor: background };
+      colorStyle = {backgroundColor: background};
       const textContainerStyle = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: -(size / 20),
       };
-      // TODO if i set this style to height instead of minHeight, react-native black screens, wtf
-      const minSizeStyle = {
-        minHeight: size,
-        minWidth: size,
+      const sizeStyle = {
+        height: size,
+        width: size,
       };
       inner = (
-        <View style={[textContainerStyle, minSizeStyle]}>
+        <View style={[textContainerStyle, sizeStyle]}>
           <Text
             style={{
               color: textColor,
+              fontSize: size / 2.5,
             }}
             adjustsFontSizeToFit={true}
-            maxFontSizeMultiplier={1}
           >
             {abbr}
           </Text>
@@ -103,9 +121,26 @@ class UserAvatar extends React.PureComponent {
       );
     }
     return (
-      <View style={[localStyle, colorStyle, containerStyle]}>{inner}</View>
+      <View style={[localStyle, colorStyle, containerStyle, style]}>
+        {inner}
+      </View>
     );
   }
 }
+
+UserAvatar.propTypes = {
+  src: PropTypes.string,
+  name: PropTypes.string,
+  color: PropTypes.string,
+  colors: PropTypes.array,
+  textColor: PropTypes.string,
+  size: PropTypes.number,
+  containerStyle: PropTypes.object,
+  imageStyle: PropTypes.object,
+  style: PropTypes.object,
+  defaultName: PropTypes.string,
+  borderRadius: PropTypes.number,
+  component: PropTypes.any,
+};
 
 module.exports = UserAvatar;
