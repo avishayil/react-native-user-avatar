@@ -169,12 +169,13 @@ export default class UserAvatar extends React.PureComponent {
   getContainerStyle() {
     const {
       size,
+      src,
       borderRadius = size * 0.5,
     } = this.props;
 
     return {
       borderRadius,
-      borderWidth: 1,
+      borderWidth: src ? 0 : 1,
       borderColor: 'transparent',
       justifyContent: 'center',
       alignItems: 'center',
