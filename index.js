@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View, Image, Text} from 'react-native';
+import { View, Image, Text } from 'react-native';
 import initials from 'initials';
 
-/**
- * Helper function to calculate the number of characters
- * @constructor
- * @param {string} str - The string we want to ab.
- */
+ function abbr(name) {
+  let abbr = initials(name);
+  if (name.startsWith('+')) {
+    abbr = `+${abbr}`;
+  }
+  if (!abbr) abbr = name;
+  return abbr;
+}
+
 
 function sumChars(str) {
   let sum = 0;
@@ -18,19 +22,11 @@ function sumChars(str) {
   return sum;
 }
 
-/**
- * Main Class
- * @constructor
- */
-export class UserAvatar extends React.PureComponent {
-  /**
-   * Render function
-   * @constructor
-   */
+export default class UserAvatar extends React.PureComponent {
 
   static propTypes = {
-    src: PropTypes.string,
     name: PropTypes.string,
+    src: PropTypes.string,
     color: PropTypes.string,
     colors: PropTypes.array,
     textColor: PropTypes.string,
@@ -113,6 +109,7 @@ export class UserAvatar extends React.PureComponent {
     const {
       textColor,
       size,
+      name
     } = this.props;
 
     return (
@@ -124,7 +121,7 @@ export class UserAvatar extends React.PureComponent {
           }}
           adjustsFontSizeToFit={true}
         >
-          {this.abbr()}
+          {abbr(name)}
         </Text>
       </View>
     );
@@ -146,20 +143,10 @@ export class UserAvatar extends React.PureComponent {
 
     const props = {
       style: [imageDefaultStyle, imageStyle],
-      source: {uri: src},
+      source: { uri: src },
     };
 
     return React.createElement(Image, props);
-  }
-
-  abbr() {
-    const {name} = this.props;
-    let abbr = initials(name);
-    if (name.startsWith('+')) {
-      abbr = `+${abbr}`;
-    }
-    if (!abbr) abbr = name;
-    return abbr;
   }
 
   getBackgrond() {
@@ -177,7 +164,7 @@ export class UserAvatar extends React.PureComponent {
       const i = sumChars(name) % colors.length;
       background = colors[i];
     }
-    return {backgroundColor: background};
+    return { backgroundColor: background };
   }
 
   getContainerStyle() {
@@ -212,13 +199,11 @@ export class UserAvatar extends React.PureComponent {
 
   render() {
     const {
-      name,
       size,
       style,
     } = this.props;
 
     // Validations
-    if (!name) throw new Error('Avatar requires a name prop');
     if (typeof (size) !== 'number') throw new Error('size prop should be a number');
 
     return (
