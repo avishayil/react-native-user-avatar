@@ -15,8 +15,8 @@ const UserAvatar = (props) => {
   const {
     name,
     src,
-    color,
-    colors,
+    bgColor,
+    bgColors,
     textColor,
     size,
     imageStyle,
@@ -49,7 +49,7 @@ const UserAvatar = (props) => {
 
   return (
     <View style={[
-      generateBackgroundStyle(name, color, colors),
+      generateBackgroundStyle(name, bgColor, bgColors),
       getContainerStyle(size, src, borderRadius),
       style]}
     >
@@ -61,8 +61,8 @@ const UserAvatar = (props) => {
 UserAvatar.propTypes = {
   name: PropTypes.string,
   src: PropTypes.string,
-  color: PropTypes.string,
-  colors: PropTypes.array,
+  bgColor: PropTypes.string,
+  bgColors: PropTypes.array,
   textColor: PropTypes.string,
   size: PropTypes.number,
   imageStyle: PropTypes.object,
@@ -75,7 +75,7 @@ UserAvatar.defaultProps = {
   size: 32,
   textColor: '#fff',
   name: 'John Doe',
-  colors: [ // from https://flatuicolors.com/
+  bgColors: [ // from https://flatuicolors.com/
     '#2ecc71', // emerald
     '#3498db', // peter river
     '#8e44ad', // wisteria

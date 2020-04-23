@@ -21,7 +21,7 @@ export function sumChars(str) {
 export async function fetchImage(src) {
   try {
     const fetchCall = await fetch(src);
-    if (fetchCall._bodyBlob._data.type.startsWith('image/')) {
+    if (fetchCall.headers.map['content-type'].startsWith('image/')) {
       return true;
     } else {
       console.warn('Online fetched source is not a supported image');
@@ -33,14 +33,14 @@ export async function fetchImage(src) {
   }
 }
 
-export function generateBackgroundStyle(name, color, colors) {
+export function generateBackgroundStyle(name, bgColor, bgColors) {
   let background;
-  if (color) {
-    background = color;
+  if (bgColor) {
+    background = bgColor;
   } else {
     // Pick a deterministic color from the list
-    const i = sumChars(name) % colors.length;
-    background = colors[i];
+    const i = sumChars(name) % bgColors.length;
+    background = bgColors[i];
   }
   return {backgroundColor: background};
 }

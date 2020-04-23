@@ -7,7 +7,8 @@
 A bare-bones user avatar display with support for falling back to using the user's initials on a colored background as the avatar.
 Based on the great library for React: https://github.com/wbinnssmith/react-user-avatar, and ported to React Native.
 
-![](http://i.imgur.com/LJjK9cl.png)
+![iOS Screenshot](./screenshots/ios.png)
+![Android Screenshot](./screenshots/android.png)
 
 ## Installation
 
@@ -15,28 +16,43 @@ Based on the great library for React: https://github.com/wbinnssmith/react-user-
 
 ## Usage
 
+The fallback avatar's color may be set by passing in the `bgColor` prop, or you can customize the range of colors
+used by passing in an array of `bgColors`. The component uses a simple calculation to consistently use the same
+color for the same user's name every time.
+
+### UserAvatar Component
+
 ```jsx
 import UserAvatar from 'react-native-user-avatar';
 
-
-<UserAvatar size="100" name="Avishay Bar" />
-<UserAvatar size="100" name="Avishay Bar" src="https://dummyimage.com/100x100/000/fff" />
-<UserAvatar size="50" name="John Doe" colors={['#ccc', '#fafafa', '#ccaabb']}/>
-<UserAvatar size="50" name="John Doe" />
-<UserAvatar size="50" name="Jane Doe" color="#000" />
+const App: () => React$Node = () => {
+  return (
+    <>
+    ...
+    <View>
+      <UserAvatar size="100" name="Avishay Bar" />
+      <UserAvatar size="100" name="Avishay Bar" src="https://dummyimage.com/100x100/000/fff" />
+      <UserAvatar size="50" name="John Doe" colors={['#ccc', '#fafafa', '#ccaabb']}/>
+      <UserAvatar size="50" name="John Doe" />
+      <UserAvatar size="50" name="Jane Doe" color="#000" />
+    </View>
+    ...
 ```
 
-## User-defined Image-Component
+### UserAvatar Props
 
-It is also possible to use another Image-Component than the built-in `<Image>`.
-
-```jsx
-<UserAvatar size="50" name="John Doe" component={CachedImage} />
-```
-
-The fallback avatar's color may be set by passing in the `color` prop, or you can customize the range of colors
-used by passing in an array of `colors`. The component uses a simple calculation to consistently use the same
-color for the same user's name every time.
+Attribute        | Type            | Default Value | Description
+---------------- | --------------- | ------------- | -----------
+`name`           | string          | `'John Doe'`  | name used for generating initials
+`src`            | string          | `undefined`   | source image on the internet to display
+`bgColor`        | string          | `undefined`   | custom background color for the initials
+`bgColors`       | array           | see index.js  | custom array of background colors to choose from
+`textColor`      | string          | `'#fff'`      | custom text color for the initials font
+`size`           | number          | `32`          | custom size that defines both the avatar and the initials font size
+`imageStyle`     | object          | `undefined`   | custom image styling to append to the `Image` component displays the source image
+`style`          | object          | `undefined`   | custom style to append to the `UserAvatar` component container
+`borderRadius`   | number          | `size * 0.5`  | custom border radius for the component
+`component`      | React.Component | `undefined`   | custom component to display instead of initials or source image
 
 ## Credits
 
