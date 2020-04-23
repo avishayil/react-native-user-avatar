@@ -22,6 +22,14 @@
         "react"
     ],
     "rules": {
+        "require-jsdoc": [
+            "error",
+            {
+                "require": {
+                    "FunctionDeclaration": false
+                }
+            }
+        ]
     },
     "settings": {
         "react": {

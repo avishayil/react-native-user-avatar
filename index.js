@@ -1,8 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
-import {TextAvatar, ImageAvatar} from './components/';
-import {fetchImage, getContainerStyle, generateBackgroundStyle} from './helpers';
+import {
+  TextAvatar,
+  ImageAvatar,
+} from './components/';
+import {
+  fetchImage,
+  getContainerStyle,
+  generateBackgroundStyle,
+} from './helpers';
 
 const UserAvatar = (props) => {
   const {
@@ -19,21 +26,33 @@ const UserAvatar = (props) => {
   } = props;
 
   // Validations
-  if (typeof (size) !== 'number') throw new Error('size prop should be a number');
+  if (typeof (size) !== 'number') {
+    throw new Error('size prop should be a number');
+  }
 
-  const [inner, setInner] = useState(<TextAvatar textColor={textColor} size={size} name={name} />);
+  const [inner, setInner] = useState(
+      <TextAvatar textColor={textColor} size={size} name={name} />,
+  );
 
   useEffect(() => {
     if (component) setInner(component);
     if (src) {
       fetchImage(src).then((isImage) => {
-        if (isImage) setInner(<ImageAvatar src={src} size={size} imageStyle={imageStyle} />);
+        if (isImage) {
+          setInner(
+              <ImageAvatar src={src} size={size} imageStyle={imageStyle} />,
+          );
+        }
       });
     }
   }, []);
 
   return (
-    <View style={[generateBackgroundStyle(name, color, colors), getContainerStyle(size, src, borderRadius), style]}>
+    <View style={[
+      generateBackgroundStyle(name, color, colors),
+      getContainerStyle(size, src, borderRadius),
+      style]}
+    >
       {inner}
     </View>
   );

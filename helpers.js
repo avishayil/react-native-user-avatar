@@ -28,7 +28,7 @@ export async function fetchImage(src) {
       return false;
     }
   } catch (err) {
-    console.warn('Error fetching the online image source, falling back to initials', err);
+    console.warn('Error fetching source, falling back to initials', err);
     return false;
   }
 }
