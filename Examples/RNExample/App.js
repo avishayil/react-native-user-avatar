@@ -49,6 +49,8 @@ const App: () => React$Node = () => {
               <UserAvatar name="Avishay Bar" size={100} />
               <Text style={{fontSize: 30}}>Avatar Image</Text>
               <UserAvatar name="Avishay Bar" src={"https://dummyimage.com/100x100/000/fff"} size={100} />
+              <Text style={{fontSize: 30}}>Avatar Custom Component</Text>
+              <UserAvatar name="Avishay Bar" component={<Image source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}} style={{ width: 50, height: 50}} />}  size={100} />
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>

@@ -1,24 +1,27 @@
 import initials from 'initials';
 
-export function abbr(name) {
+export const abbr = (name) => {
   let abbr = initials(name);
   if (name.startsWith('+')) {
     abbr = `+${ abbr }`;
   }
-  if (!abbr) abbr = name;
+  if (!abbr) {
+    console.warn('Could not get abbr from name');
+    abbr = name;
+  }
   return abbr;
-}
+};
 
-export function sumChars(str) {
+export const sumChars = (str) => {
   let sum = 0;
   for (let i = 0; i < str.length; i++) {
     sum += str.charCodeAt(i);
   }
 
   return sum;
-}
+};
 
-export async function fetchImage(src) {
+export const fetchImage = async (src) => {
   try {
     const fetchCall = await fetch(src);
     if (fetchCall.headers.map['content-type'].startsWith('image/')) {
@@ -31,9 +34,9 @@ export async function fetchImage(src) {
     console.warn('Error fetching source, falling back to initials', err);
     return false;
   }
-}
+};
 
-export function generateBackgroundStyle(name, bgColor, bgColors) {
+export const generateBackgroundStyle = (name, bgColor, bgColors) => {
   let background;
   if (bgColor) {
     background = bgColor;
@@ -43,9 +46,9 @@ export function generateBackgroundStyle(name, bgColor, bgColors) {
     background = bgColors[i];
   }
   return {backgroundColor: background};
-}
+};
 
-export function getContainerStyle(size, src, borderRadius) {
+export const getContainerStyle = (size, src, borderRadius) => {
   return {
     borderRadius: borderRadius ? borderRadius : (size * 0.5),
     borderWidth: src ? 0 : 1,
