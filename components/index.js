@@ -1,4 +1,5 @@
 import ImageAvatar from './ImageAvatar';
 import TextAvatar from './TextAvatar';
+import CustomAvatar from './CustomAvatar';
 
-export {ImageAvatar, TextAvatar};
+export {ImageAvatar, TextAvatar, CustomAvatar};

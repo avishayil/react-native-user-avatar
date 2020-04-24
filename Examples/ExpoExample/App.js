@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 
 import UserAvatar from 'react-native-user-avatar';
 
@@ -19,6 +19,8 @@ export default function App() {
           <UserAvatar name="Avishay Bar" size={100} />
           <Text style={{fontSize: 30}}>Avatar Image</Text>
           <UserAvatar name="Avishay Bar" src={"https://dummyimage.com/100x100/000/fff"} size={100} />
+          <Text style={{fontSize: 30}}>Avatar Custom Component</Text>
+          <UserAvatar name="Avishay Bar" component={<Image source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}} style={{ width: 50, height: 50}} />}  size={100} />
         </View>
       </View>
     </ScrollView>

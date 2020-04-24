@@ -4,6 +4,7 @@ import {View} from 'react-native';
 import {
   TextAvatar,
   ImageAvatar,
+  CustomAvatar,
 } from './components/';
 import {
   fetchImage,
@@ -12,7 +13,7 @@ import {
 } from './helpers';
 
 const UserAvatar = (props) => {
-  const {
+  let {
     name,
     src,
     bgColor,
@@ -26,8 +27,9 @@ const UserAvatar = (props) => {
   } = props;
 
   // Validations
-  if (typeof (size) !== 'number') {
-    throw new Error('size prop should be a number');
+  if (typeof (size) === 'string') {
+    console.warn('size prop should be a number');
+    size = parseInt(size);
   }
 
   const [inner, setInner] = useState(
@@ -35,7 +37,7 @@ const UserAvatar = (props) => {
   );
 
   useEffect(() => {
-    if (component) setInner(component);
+    if (component) setInner(<CustomAvatar size={size} component={component} />);
     if (src) {
       fetchImage(src).then((isImage) => {
         if (isImage) {

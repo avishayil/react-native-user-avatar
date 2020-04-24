@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render <ImageAvatar /> with src and size 1`] = `
+<Image
+  source={
+    Object {
+      "uri": "https://dummyimage.com/100x100/000/fff",
+    }
+  }
+  style={
+    Array [
+      Object {
+        "borderRadius": 50,
+        "height": 100,
+        "width": 100,
+      },
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`should render <ImageAvatar /> with src, size and imageStyle 1`] = `
+<Image
+  source={
+    Object {
+      "uri": "https://dummyimage.com/100x100/000/fff",
+    }
+  }
+  style={
+    Array [
+      Object {
+        "borderRadius": 50,
+        "height": 100,
+        "width": 100,
+      },
+      Object {
+        "borderRadius": 50,
+        "height": 100,
+        "width": 100,
+      },
+    ]
+  }
+/>
+`;
