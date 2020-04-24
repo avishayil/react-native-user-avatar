@@ -1,3 +1,5 @@
+/* eslint max-len: 0 */
+
 import 'react-native';
 import {Image} from 'react-native';
 import React from 'react';

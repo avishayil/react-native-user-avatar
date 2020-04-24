@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const CustomAvatar = (props) => {
   const {
     size,
-    component
+    component,
   } = props;
 
   const containerStyle = {
@@ -14,7 +14,7 @@ const CustomAvatar = (props) => {
     justifyContent: 'center',
     marginTop: -(size / 20),
     height: size,
-    width: size
+    width: size,
   };
 
   return (
@@ -26,7 +26,7 @@ const CustomAvatar = (props) => {
 
 CustomAvatar.propTypes = {
   size: PropTypes.number,
-  component: PropTypes.any
+  component: PropTypes.any,
 };
 
 export default CustomAvatar;

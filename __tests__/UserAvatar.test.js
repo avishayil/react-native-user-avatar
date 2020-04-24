@@ -1,5 +1,7 @@
+/* eslint max-len: 0 */
+
 import 'react-native';
-import { Image } from 'react-native';
+import {Image} from 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -21,6 +23,6 @@ it('should warn because size is not number', () => {
 });
 
 it('should render <UserAvatar /> with name, with custom component', () => {
-  const tree = renderer.create(<UserAvatar name="Avishay Bar" component={<Image source={require('./images/rn_logo.png')} style={{ width: 50, height: 50}} />} size={100} />).toJSON();
+  const tree = renderer.create(<UserAvatar name="Avishay Bar" component={<Image source={require('./images/rn_logo.png')} style={{width: 50, height: 50}} />} size={100} />).toJSON();
   expect(tree).toMatchSnapshot();
 });
