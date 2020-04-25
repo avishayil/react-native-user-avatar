@@ -20,7 +20,7 @@
   "license": "MIT",
   "repository": "github:avishayil/react-native-user-avatar",
   "scripts": {
-    "lint": "eslint --ext '.js,.ts' .",
+    "lint": "eslint --ext '.js' .",
     "test": "jest --coverage",
     "typescript": "tsc --noEmit",
     "bootstrap": "yarn --cwd Examples/RNExample && yarn --cwd Examples/ExpoExample && yarn"
