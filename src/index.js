@@ -5,7 +5,7 @@ import {
   TextAvatar,
   ImageAvatar,
   CustomAvatar,
-} from './components/';
+} from './components/'; ;
 import {
   fetchImage,
   getContainerStyle,

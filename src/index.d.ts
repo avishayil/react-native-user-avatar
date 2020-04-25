@@ -1,5 +1,6 @@
 import React from 'react'
 import { ImageStyle, StyleProp } from 'react-native'
+
 type UserAvatarPropsType = {
   name: string
   src: string
@@ -13,9 +14,8 @@ type UserAvatarPropsType = {
   component: Object
 }
 
-export default class UserAvatar extends React.PureComponent<UserAvatarPropsType, any> {
+export default class UserAvatar extends React.SFC<UserAvatarPropsType, any> {
   static defaultProps: {}
-  constructor()
   componentDidMount(): void
   componentWillMount(): void
   render(): JSX.Element
