@@ -4,7 +4,7 @@
   "description": "React Native component for a user avatar with fallback to colored initials",
   "main": "lib/module/index.js",
   "module": "lib/module/index.js",
-  "react-native": "src/index.js",
+  "react-native": "lib/module/index.js",
   "types": "lib/typescript/src/index.d.ts",
   "files": [
     "lib/",
@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@react-native-community/bob": "^0.10.1",
+    "@types/react-native": "^0.62.2",
     "babel-jest": "24.7.1",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
@@ -70,7 +71,8 @@
     "source": "src",
     "output": "lib",
     "targets": [
-      "module"
+      "module",
+      "typescript"
     ],
     "files": [
       "src/"
