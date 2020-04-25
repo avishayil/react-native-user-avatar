@@ -12,17 +12,17 @@ I am an individual wokring on this project, all the work is public and presented
 
 ### Commit message convention
 
-We follow the [conventional commits specification](https://www.conventionalcommits.org/en) for our commit messages:
+We follow the [conventional commits specification](https://www.conventionalcommits.org/en) for commit messages:
 
-* `fix`: bug fixes, e.g. fix Button color on DarkTheme.
-* `feat`: new features, e.g. add Snackbar component.
-* `refactor`: code refactor, e.g. new folder structure for components.
-* `docs`: changes into documentation, e.g. add usage example for Button.
+* `fix`: bug fixes, e.g. fixed issues with custom component.
+* `feat`: new features, e.g. added a prop or a capability.
+* `refactor`: code refactor, e.g. new folder structure.
+* `docs`: changes into documentation, e.g. add usage example.
 * `test`: adding or updating tests, eg unit, snapshot testing.
-* `chore`: tooling changes, e.g. change circleci config.
-* `BREAKING CHANGE`: for changes that break existing usage, e.g. change API of a component.
+* `chore`: tooling changes, e.g. change travis.yml config.
+* `BREAKING CHANGE`: for changes that break existing usage, e.g. changed usage.
 
-Our pre-commit hooks verify that your commit message matches this format when committing.
+The built-in pre-commit hooks verify that your commit message matches this format when committing.
 
 ### Linting and tests
 
@@ -50,7 +50,7 @@ After you're done, you can run `yarn example start` in the project root (or `exp
 
 ## Reporting issues
 
-You can report issues on our [bug tracker](https://github.com/callstack/react-native-user-avatar/issues). Please follow the issue template when opening an issue.
+You can report issues on the [bug tracker](https://github.com/avishayil/react-native-user-avatar/issues). Please follow the issue template when opening an issue.
 
 ## License
 
