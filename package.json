@@ -2,7 +2,7 @@
   "name": "react-native-user-avatar",
   "version": "1.0.7",
   "description": "React Native component for a user avatar with fallback to colored initials",
-  "main": "lib/commonjs/index.js",
+  "main": "lib/module/index.js",
   "module": "lib/module/index.js",
   "react-native": "lib/module/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -23,7 +23,7 @@
     "lint": "eslint --ext '.js' .",
     "test": "jest --coverage",
     "typescript": "tsc --noEmit",
-    "bootstrap": "yarn --cwd Examples/RNExample && yarn --cwd Examples/ExpoExample && yarn"
+    "bootstrap": "yarn --cwd Example && yarn"
   },
   "dependencies": {
     "initials": "^3.0.1",
@@ -62,7 +62,7 @@
       "**/**/*.test.js?(x)"
     ],
     "modulePathIgnorePatterns": [
-      "<rootDir>/Examples/",
+      "<rootDir>/Example/",
       "<rootDir>/lib/"
     ]
   },
