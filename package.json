@@ -19,15 +19,18 @@
   "author": "Avishay Bar <avishay.il@gmail.com>",
   "license": "MIT",
   "repository": "github:avishayil/react-native-user-avatar",
-  "dependencies": {
-    "initials": "^3.0.1",
-    "prop-types": "^15.7.2"
-  },
   "scripts": {
     "lint": "eslint --ext '.js,.ts' .",
     "test": "jest --coverage",
     "typescript": "tsc --noEmit",
     "bootstrap": "yarn --cwd Examples/RNExample && yarn --cwd Examples/ExpoExample && yarn"
+  },
+  "dependencies": {
+    "initials": "^3.0.1",
+    "prop-types": "^15.7.2"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@react-native-community/bob": "^0.10.1",
