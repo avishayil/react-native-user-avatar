@@ -24,8 +24,9 @@
     "test": "jest --coverage && jest-coverage-badges --output './badges'",
     "typescript": "tsc --noEmit",
     "bootstrap": "yarn --cwd Example && yarn",
-    "example": "yarn --cwd example",
-    "build": "yarn bob build"
+    "example": "yarn --cwd Example",
+    "build": "yarn bob build",
+    "clean": "rm -rf node_modules coverage lib Example/node_modules Example/.expo"
   },
   "dependencies": {
     "initials": "^3.0.1",
