@@ -4,6 +4,11 @@
 [![npm downloads](https://img.shields.io/npm/dm/react-native-user-avatar.svg?style=flat-square)](https://www.npmjs.com/package/react-native-user-avatar)
 [![Build Status](https://travis-ci.org/avishayil/react-native-user-avatar.svg?branch=master)](https://travis-ci.org/avishayil/react-native-user-avatar)
 
+![Coverage lines](./badges/badge-lines.svg)
+![Coverage functions](./badges/badge-functions.svg)
+![Coverage branches](./badges/badge-branches.svg)
+![Coverage statements](./badges/badge-statements.svg)
+
 A bare-bones user avatar display with support for falling back to using the user's initials on a colored background as the avatar.
 Based on the great library for React: https://github.com/wbinnssmith/react-user-avatar, and ported to React Native.
 
@@ -31,11 +36,11 @@ const App: () => React$Node = () => {
     <>
     ...
     <View>
-      <UserAvatar size="100" name="Avishay Bar" />
-      <UserAvatar size="100" name="Avishay Bar" src="https://dummyimage.com/100x100/000/fff" />
-      <UserAvatar size="50" name="John Doe" bgColors={['#ccc', '#fafafa', '#ccaabb']}/>
-      <UserAvatar size="50" name="John Doe" />
-      <UserAvatar size="50" name="Jane Doe" bgColor="#000" />
+      <UserAvatar size={100} name="Avishay Bar" />
+      <UserAvatar size={100} name="Avishay Bar" src="https://dummyimage.com/100x100/000/fff" />
+      <UserAvatar size={50} name="John Doe" bgColors={['#ccc', '#fafafa', '#ccaabb']}/>
+      <UserAvatar size={50} name="John Doe" />
+      <UserAvatar size={50} name="Jane Doe" bgColor="#000" />
     </View>
     ...
 ```
@@ -54,6 +59,10 @@ Attribute        | Type            | Default Value | Description
 `style`          | object          | `undefined`   | custom style to append to the `UserAvatar` component container
 `borderRadius`   | number          | `size * 0.5`  | custom border radius for the component
 `component`      | React.Component | `undefined`   | custom component to display instead of initials or source image
+
+## Contributing
+
+Contributions are welcome. Please see [CONTRIBUTING.md](CONTRIBUTING.md) if you like to contribute to this library.
 
 ## Credits
 
