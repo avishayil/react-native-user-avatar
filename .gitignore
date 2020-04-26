@@ -67,3 +67,6 @@ coverage
 
 # Bob
 lib/
+
+# Dot Env
+.env
