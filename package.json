@@ -1,9 +1,15 @@
 {
   "name": "react-native-user-avatar",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "React Native component for a user avatar with fallback to colored initials",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "lib/module/index.js",
+  "module": "lib/module/index.js",
+  "react-native": "lib/module/index.js",
+  "types": "lib/typescript/src/index.d.ts",
+  "files": [
+    "lib/",
+    "src/"
+  ],
   "keywords": [
     "react-native",
     "react-native-component",
@@ -13,24 +19,38 @@
   "author": "Avishay Bar <avishay.il@gmail.com>",
   "license": "MIT",
   "repository": "github:avishayil/react-native-user-avatar",
+  "scripts": {
+    "lint": "eslint --ext '.js' .",
+    "test": "jest --coverage && jest-coverage-badges --output './badges'",
+    "typescript": "tsc --noEmit",
+    "bootstrap": "yarn --cwd Example && yarn",
+    "example": "yarn --cwd example",
+    "build": "yarn bob build"
+  },
   "dependencies": {
     "initials": "^3.0.1",
     "prop-types": "^15.7.2"
   },
-  "scripts": {
-    "lint": "eslint **/*.js",
-    "test": "jest --coverage"
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
+    "@react-native-community/bob": "^0.10.1",
+    "@types/react-native": "^0.62.2",
     "babel-jest": "24.7.1",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.19.0",
+    "husky": "^1.3.1",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.58.0",
     "react": "16.11.0",
     "react-native": "0.62.2",
-    "react-test-renderer": "16.11.0"
+    "react-test-renderer": "16.11.0",
+    "typescript": "^3.8.3",
+    "commitlint": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "jest-coverage-badges": "^1.1.2"
   },
   "peerDependencies": {
     "react": "*",
@@ -46,10 +66,33 @@
       "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
     },
     "testMatch": [
-      "**/*.test.js?(x)"
+      "**/**/*.test.js?(x)"
     ],
     "modulePathIgnorePatterns": [
-      "<rootDir>/Examples"
+      "<rootDir>/Example/",
+      "<rootDir>/lib/"
+    ],
+    "coverageReporters": [
+      "json-summary", 
+      "text",
+      "lcov"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "yarn lint && yarn typescript && yarn test"
+    }
+  },
+  "@react-native-community/bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "module",
+      "typescript"
+    ],
+    "files": [
+      "src/"
     ]
   }
 }

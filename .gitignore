@@ -64,3 +64,6 @@ buck-out/
 
 # Jest
 coverage
+
+# Bob
+lib/
