@@ -21,9 +21,9 @@ export const sumChars = (str) => {
   return sum;
 };
 
-export const fetchImage = async (src) => {
+export const fetchImage = async (src, options) => {
   try {
-    const fetchCall = await fetch(src);
+    const fetchCall = await fetch(src, options);
     if (fetchCall.headers.map['content-type'].startsWith('image/')) {
       return true;
     } else {
