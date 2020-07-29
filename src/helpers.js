@@ -48,6 +48,18 @@ export const generateBackgroundStyle = (name, bgColor, bgColors) => {
   return {backgroundColor: background};
 };
 
+export const generateBackgroundColor = (name, bgColor, bgColors) => {
+  let background;
+  if (bgColor) {
+    background = bgColor;
+  } else {
+    // Pick a deterministic color from the list
+    const i = sumChars(name) % bgColors.length;
+    background = bgColors[i];
+  }
+  return background;
+};
+
 export const getContainerStyle = (size, src, borderRadius) => {
   return {
     borderRadius: borderRadius ? borderRadius : (size * 0.5),
