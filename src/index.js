@@ -12,6 +12,7 @@ import {
   fetchImage,
   getContainerStyle,
   generateBackgroundStyle,
+  generateBackgroundColor
 } from './helpers';
 
 const UserAvatar = (props) => {
@@ -91,5 +92,7 @@ UserAvatar.defaultProps = {
     '#2c3e50', // midnight blue
   ],
 };
+
+export { generateBackgroundColor };
 
 export default UserAvatar;
