@@ -1,6 +1,6 @@
 {
   "name": "react-native-user-avatar",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React Native component for a user avatar with fallback to colored initials",
   "main": "lib/module/index.js",
   "module": "lib/module/index.js",
@@ -18,7 +18,7 @@
   ],
   "author": "Avishay Bar <avishay.il@gmail.com>",
   "license": "MIT",
-  "repository": "github:avishayil/react-native-user-avatar",
+  "repository": "github:superserg8/react-native-user-avatar",
   "scripts": {
     "test": "jest --coverage && jest-coverage-badges --output './badges'",
     "typescript": "tsc --noEmit",
