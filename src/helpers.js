@@ -1,7 +1,7 @@
 import initials from 'initials';
 
 export const abbr = (name) => {
-  let abbr = initials(name);
+  let abbr = initials(name).toUpperCase();
   if (name.startsWith('+')) {
     abbr = `+${ abbr }`;
   }
