@@ -1,13 +1,16 @@
 import initials from 'initials';
 
-export const abbr = (name) => {
+export const abbr = (name, noUpperCase) => {
   let abbr = initials(name);
-  if (name.startsWith('+')) {
-    abbr = `+${ abbr }`;
-  }
   if (!abbr) {
     console.warn('Could not get abbr from name');
     abbr = name;
+  }
+  if (abbr.length > 2) {
+    abbr = abbr.substring(0, 2);
+  }
+  if (!noUpperCase) {
+    abbr = abbr.toUpperCase();
   }
   return abbr;
 };
@@ -46,6 +49,18 @@ export const generateBackgroundStyle = (name, bgColor, bgColors) => {
     background = bgColors[i];
   }
   return {backgroundColor: background};
+};
+
+export const generateBackgroundColor = (name, bgColor, bgColors) => {
+  let background;
+  if (bgColor) {
+    background = bgColor;
+  } else {
+    // Pick a deterministic color from the list
+    const i = sumChars(name) % bgColors.length;
+    background = bgColors[i];
+  }
+  return background;
 };
 
 export const getContainerStyle = (size, src, borderRadius) => {

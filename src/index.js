@@ -12,6 +12,7 @@ import {
   fetchImage,
   getContainerStyle,
   generateBackgroundStyle,
+  generateBackgroundColor
 } from './helpers';
 
 const UserAvatar = (props) => {
@@ -26,6 +27,8 @@ const UserAvatar = (props) => {
     style,
     borderRadius,
     component,
+    noUpperCase,
+    textStyle,
   } = props;
 
   // Validations
@@ -35,7 +38,7 @@ const UserAvatar = (props) => {
   }
 
   const [inner, setInner] = useState(
-      <TextAvatar textColor={textColor} size={size} name={name} />,
+      <TextAvatar textColor={textColor} size={size} name={name} noUpperCase={noUpperCase} textStyle={textStyle} />,
   );
 
   useEffect(() => {
@@ -51,7 +54,7 @@ const UserAvatar = (props) => {
       });
       return () => controller.abort();
     }
-  }, []);
+  }, [src]);
 
   return (
     <View style={[
@@ -75,6 +78,8 @@ UserAvatar.propTypes = {
   style: PropTypes.object,
   borderRadius: PropTypes.number,
   component: PropTypes.any,
+  noUpperCase: PropTypes.bool,
+  textStyle: PropTypes.object,
 };
 
 UserAvatar.defaultProps = {
@@ -90,6 +95,9 @@ UserAvatar.defaultProps = {
     '#1abc9c', // turquoise
     '#2c3e50', // midnight blue
   ],
+  textStyle: {},
 };
+
+export { generateBackgroundColor };
 
 export default UserAvatar;
