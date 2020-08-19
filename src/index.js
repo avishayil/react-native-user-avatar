@@ -28,6 +28,7 @@ const UserAvatar = (props) => {
     borderRadius,
     component,
     noUpperCase,
+    textStyle,
   } = props;
 
   // Validations
@@ -37,7 +38,7 @@ const UserAvatar = (props) => {
   }
 
   const [inner, setInner] = useState(
-      <TextAvatar textColor={textColor} size={size} name={name} noUpperCase={noUpperCase} />,
+      <TextAvatar textColor={textColor} size={size} name={name} noUpperCase={noUpperCase} textStyle={textStyle} />,
   );
 
   useEffect(() => {
@@ -77,6 +78,8 @@ UserAvatar.propTypes = {
   style: PropTypes.object,
   borderRadius: PropTypes.number,
   component: PropTypes.any,
+  noUpperCase: PropTypes.bool,
+  textStyle: PropTypes.object,
 };
 
 UserAvatar.defaultProps = {
@@ -92,6 +95,7 @@ UserAvatar.defaultProps = {
     '#1abc9c', // turquoise
     '#2c3e50', // midnight blue
   ],
+  textStyle: {},
 };
 
 export { generateBackgroundColor };
