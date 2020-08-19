@@ -9,6 +9,7 @@ const TextAvatar = (props) => {
     size,
     textColor,
     noUpperCase,
+    textStyle,
   } = props;
 
   const textContainerStyle = {
