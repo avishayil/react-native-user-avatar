@@ -24,6 +24,7 @@ const UserAvatar = (props) => {
     size,
     imageStyle,
     style,
+    textStyle,
     borderRadius,
     component,
   } = props;
@@ -35,8 +36,8 @@ const UserAvatar = (props) => {
   }
 
   const [inner, setInner] = useState(
-      <TextAvatar textColor={textColor} size={size} name={name} />,
-  );
+      <TextAvatar
+        textColor={textColor} size={size} name={name} style={textStyle} />);
 
   useEffect(() => {
     if (component) setInner(<CustomAvatar size={size} component={component} />);
@@ -73,6 +74,7 @@ UserAvatar.propTypes = {
   size: PropTypes.number,
   imageStyle: PropTypes.object,
   style: PropTypes.object,
+  textStyle: PropTypes.object,
   borderRadius: PropTypes.number,
   component: PropTypes.any,
 };

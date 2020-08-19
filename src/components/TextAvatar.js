@@ -8,6 +8,7 @@ const TextAvatar = (props) => {
     name,
     size,
     textColor,
+    style = {},
   } = props;
 
   const textContainerStyle = {
@@ -25,6 +26,7 @@ const TextAvatar = (props) => {
         style={{
           color: textColor,
           fontSize: size / 2.5,
+          ...style,
         }}
         adjustsFontSizeToFit={true}
       >
@@ -38,6 +40,7 @@ TextAvatar.propTypes = {
   name: PropTypes.string,
   size: PropTypes.number,
   textColor: PropTypes.string,
+  style: PropTypes.object,
 };
 
 export default TextAvatar;
