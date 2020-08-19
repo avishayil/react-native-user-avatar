@@ -27,6 +27,7 @@ const UserAvatar = (props) => {
     style,
     borderRadius,
     component,
+    noUpperCase,
   } = props;
 
   // Validations
@@ -36,7 +37,7 @@ const UserAvatar = (props) => {
   }
 
   const [inner, setInner] = useState(
-      <TextAvatar textColor={textColor} size={size} name={name} />,
+      <TextAvatar textColor={textColor} size={size} name={name} noUpperCase={noUpperCase} />,
   );
 
   useEffect(() => {

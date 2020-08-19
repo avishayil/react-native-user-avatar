@@ -1,13 +1,16 @@
 import initials from 'initials';
 
-export const abbr = (name) => {
-  let abbr = initials(name).toUpperCase();
-  if (name.startsWith('+')) {
-    abbr = `+${ abbr }`;
-  }
+export const abbr = (name, noUpperCase) => {
+  let abbr = initials(name);
   if (!abbr) {
     console.warn('Could not get abbr from name');
     abbr = name;
+  }
+  if (abbr.length > 2) {
+    abbr = abbr.substring(0, 2);
+  }
+  if (!noUpperCase) {
+    abbr = abbr.toUpperCase();
   }
   return abbr;
 };

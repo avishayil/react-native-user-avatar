@@ -8,6 +8,7 @@ const TextAvatar = (props) => {
     name,
     size,
     textColor,
+    noUpperCase,
   } = props;
 
   const textContainerStyle = {
@@ -28,7 +29,7 @@ const TextAvatar = (props) => {
         }}
         adjustsFontSizeToFit={true}
       >
-        {abbr(name)}
+        {abbr(name, noUpperCase)}
       </Text>
     </View>
   );
@@ -38,6 +39,7 @@ TextAvatar.propTypes = {
   name: PropTypes.string,
   size: PropTypes.number,
   textColor: PropTypes.string,
+  noUpperCase: PropTypes.bool,
 };
 
 export default TextAvatar;
