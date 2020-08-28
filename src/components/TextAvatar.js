@@ -22,7 +22,7 @@ const TextAvatar = (props) => {
 
   return (
     <View style={textContainerStyle}>
-      <Text
+      {!!name && <Text
         style={{
           color: textColor,
           fontSize: size / 2.5,
@@ -31,7 +31,7 @@ const TextAvatar = (props) => {
         adjustsFontSizeToFit={true}
       >
         {abbr(name)}
-      </Text>
+      </Text>}
     </View>
   );
 };
