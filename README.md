@@ -56,6 +56,7 @@ Attribute        | Type            | Default Value | Description
 `textColor`      | string          | `'#fff'`      | custom text color for the initials font
 `size`           | number          | `32`          | custom size that defines both the avatar and the initials font size
 `imageStyle`     | object          | `undefined`   | custom image styling to append to the `Image` component displays the source image
+`textStyle`      | object          | `undefined`   | custom text styling to append to the `Text` component that displays initials
 `style`          | object          | `undefined`   | custom style to append to the `UserAvatar` component container
 `borderRadius`   | number          | `size * 0.5`  | custom border radius for the component
 `component`      | React.Component | `undefined`   | custom component to display instead of initials or source image
