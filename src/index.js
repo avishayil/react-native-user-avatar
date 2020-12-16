@@ -40,8 +40,9 @@ const UserAvatar = (props) => {
         textColor={textColor} size={size} name={name} style={textStyle} />);
 
   useEffect(() => {
-    if (component) setInner(<CustomAvatar size={size} component={component} />);
-    if (src) {
+    if (component) {
+      setInner(<CustomAvatar size={size} component={component} />);
+    } else if (src) {
       const controller = new (AbortController || window.AbortController)();
       fetchImage(src, {signal: controller.signal}).then((isImage) => {
         if (isImage) {
@@ -51,8 +52,10 @@ const UserAvatar = (props) => {
         }
       });
       return () => controller.abort();
+    } else {
+      setInner(<TextAvatar textColor={textColor} size={size} name={name} />);
     }
-  }, []);
+  }, [textColor, size, name, component, imageStyle, src]);
 
   return (
     <View style={[
