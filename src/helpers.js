@@ -1,3 +1,4 @@
+import {Platform} from 'react-native';
 import initials from 'initials';
 
 export const abbr = (name) => {
@@ -24,7 +25,10 @@ export const sumChars = (str) => {
 export const fetchImage = async (src, options) => {
   try {
     const fetchCall = await fetch(src, options);
-    if (fetchCall.headers.map['content-type'].startsWith('image/')) {
+    const contentTypeHeader = Platform.OS === 'web' ?
+      fetchCall.headers.get('content-type') :
+      fetchCall.headers.map['content-type'];
+    if (contentTypeHeader.startsWith('image/')) {
       return true;
     } else {
       console.warn('Online fetched source is not a supported image');
