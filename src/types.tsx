@@ -1,4 +1,4 @@
-import { ImageStyle, StyleProp, ViewStyle } from 'react-native'
+import { ImageStyle, StyleProp, ViewStyle, TextStyle } from 'react-native'
 
 export type UserAvatarPropsType = {
   name: string
@@ -9,6 +9,7 @@ export type UserAvatarPropsType = {
   size: number
   imageStyle: ImageStyle
   style?: StyleProp<ViewStyle>
+  textStyle?: StyleProp<TextStyle>
   borderRadius: number
   component: Object
 }
