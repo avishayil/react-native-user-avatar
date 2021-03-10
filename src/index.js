@@ -52,7 +52,7 @@ const UserAvatar = (props) => {
       });
       return () => controller.abort();
     }
-  }, []);
+  }, [src, component]);
 
   return (
     <View style={[
