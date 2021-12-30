@@ -30,17 +30,19 @@ exports[`should render <UserAvatar /> with name, with custom component 1`] = `
       }
     }
   >
-    <Text
-      adjustsFontSizeToFit={true}
-      style={
+    <Image
+      source={
         Object {
-          "color": "#fff",
-          "fontSize": 40,
+          "testUri": "../../../src/__tests__/images/rn_logo.png",
         }
       }
-    >
-      AB
-    </Text>
+      style={
+        Object {
+          "height": 50,
+          "width": 50,
+        }
+      }
+    />
   </View>
 </View>
 `;
@@ -78,10 +80,13 @@ exports[`should render <UserAvatar /> with name, with src 1`] = `
     <Text
       adjustsFontSizeToFit={true}
       style={
-        Object {
-          "color": "#fff",
-          "fontSize": 12.8,
-        }
+        Array [
+          Object {
+            "color": "#fff",
+            "fontSize": 12.8,
+          },
+          Object {},
+        ]
       }
     >
       AB
@@ -123,10 +128,13 @@ exports[`should render <UserAvatar /> with name, without src, default values 1`]
     <Text
       adjustsFontSizeToFit={true}
       style={
-        Object {
-          "color": "#fff",
-          "fontSize": 12.8,
-        }
+        Array [
+          Object {
+            "color": "#fff",
+            "fontSize": 12.8,
+          },
+          Object {},
+        ]
       }
     >
       AB
@@ -168,10 +176,13 @@ exports[`should warn because size is not number 1`] = `
     <Text
       adjustsFontSizeToFit={true}
       style={
-        Object {
-          "color": "#fff",
-          "fontSize": 40,
-        }
+        Array [
+          Object {
+            "color": "#fff",
+            "fontSize": 40,
+          },
+          Object {},
+        ]
       }
     >
       AB

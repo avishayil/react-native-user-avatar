@@ -2,9 +2,9 @@
 
 exports[`test abbr function normally should return my initials 1`] = `"AB"`;
 
-exports[`test abbr function when name is invalid should return my initials 1`] = `"!@# #!$#"`;
+exports[`test abbr function when name is invalid should return my initials 1`] = `"!@"`;
 
-exports[`test abbr function when name starts with + should return my initials 1`] = `"+AB"`;
+exports[`test abbr function when name starts with + should return my initials 1`] = `"+A"`;
 
 exports[`test generateBackgroundStyle function should return the same sum 1`] = `
 Object {
