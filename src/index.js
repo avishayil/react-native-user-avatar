@@ -15,13 +15,21 @@ import {
   generateBackgroundColor,
 } from './helpers';
 
+const AVATAR_TEXT_TYPE = 'text';
+const AVATAR_CUSTOM_TYPE = 'custom';
+const AVATAR_IMAGE_TYPE = 'image';
+
 const UserAvatar = (props) => {
   let {
     name,
     src,
+    srcLocal,
     bgColor,
     bgColors,
+    borderColor,
+    borderWidth,
     textColor,
+    textStyle,
     size,
     imageStyle,
     style,
@@ -68,9 +76,18 @@ const UserAvatar = (props) => {
     <View style={[
       generateBackgroundStyle(name, bgColor, bgColors),
       getContainerStyle(size, src, borderRadius),
+      {
+        borderWidth: borderColor ? borderWidthAvatar : 0,
+        borderColor: borderColor || bgColor || 'rgba(255,255,255,0)'
+      },
       style]}
     >
-      {inner}
+      {
+        innerType === AVATAR_TEXT_TYPE ?
+            <TextAvatar textColor={textColor} textStyle={textStyle} size={sizeWithBorder} name={name}/>
+            :
+            <>{inner}</>
+      }
     </View>
   );
 };
