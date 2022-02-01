@@ -5,6 +5,7 @@ import {Image} from 'react-native';
 const ImageAvatar = (props) => {
   const {
     src,
+    source,
     size,
     imageStyle,
     borderRadius,
@@ -18,7 +19,7 @@ const ImageAvatar = (props) => {
 
   const newProps = {
     style: [imageDefaultStyle, imageStyle],
-    source: {uri: src},
+    source: !!src ? {uri: src} : source,
   };
 
   return React.createElement(Image, newProps);
