@@ -32,6 +32,9 @@ export const sumChars = (str) => {
 export const fetchImage = async (src, options) => {
   try {
     const fetchCall = await fetch(src, options);
+    if (!fetchCall) {
+      return false;
+    }
     const contentTypeHeader = Platform.OS === 'web' ?
       fetchCall.headers.get('content-type') :
       fetchCall.headers.map['content-type'];

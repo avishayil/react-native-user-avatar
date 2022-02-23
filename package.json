@@ -1,11 +1,11 @@
 {
   "name": "react-native-user-avatar",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "React Native component for a user avatar with fallback to colored initials",
   "main": "lib/module/index.js",
   "module": "lib/module/index.js",
   "react-native": "src/index.js",
-  "types": "lib/typescript/src/index.d.ts",
+  "types": "lib/typescript/types.d.ts",
   "files": [
     "lib/",
     "src/"
@@ -30,47 +30,61 @@
     "clean": "rm -rf node_modules coverage .env lib Example/node_modules"
   },
   "dependencies": {
+    "react": "17.0.1",
+    "react-native": "^0.64.1",
     "abortcontroller-polyfill": "^1.4.0",
     "initials": "^3.0.1",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "node-fetch": "2.6.7"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-0",
     "@commitlint/config-conventional": "^8.3.4",
     "@react-native-community/bob": "^0.10.1",
+    "@react-native-community/eslint-config": "^0.0.7",
     "@release-it/conventional-changelog": "^1.1.0",
-    "@types/react-native": "^0.62.2",
-    "babel-jest": "24.7.1",
+    "@types/jest": "^27.4.0",
+    "@types/react": "^17.0.1",
+    "@types/react-native": "^0.64.1",
+    "@jest/create-cache-key-function": "^27.5.0",
+    "jest-fetch-mock": "^3.0.3",
+    "babel-jest": "27.5.0",
     "commitlint": "^8.3.4",
     "dotenv-cli": "^3.1.0",
-    "eslint": "^6.8.0",
+    "eslint": "^5.0.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-react": "^7.19.0",
-    "husky": "^1.3.1",
-    "jest": "^24.9.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.0.1",
+    "jest": "^27.5.0",
+    "ts-jest": "^27.1.3",
     "jest-coverage-badges": "^1.1.2",
-    "metro-react-native-babel-preset": "^0.58.0",
-    "react": "16.11.0",
-    "react-native": "0.62.2",
-    "react-test-renderer": "16.11.0",
+    "prettier": "^1.19.1",
+    "metro-react-native-babel-preset": "^0.59.0",
+    "react-test-renderer": "17.0.1",
     "release-it": "^12.6.3",
-    "typescript": "^3.8.3"
+    "typescript": "^3.7.5"
   },
-  "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
+  "resolutions": {
+    "react-native/@jest/create-cache-key-function": "^27.0.1"
   },
   "jest": {
     "preset": "react-native",
+    "automock": false,
+    "testEnvironment": "jsdom",
     "moduleFileExtensions": [
       "js",
       "json"
     ],
     "transform": {
-      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+      "^.+\\.(ts|tsx)$": "ts-jest",
+      "^.+\\.(js|jsx)$": "babel-jest"
     },
+    "transformIgnorePatterns": [
+    ],
     "testMatch": [
       "**/**/*.test.js?(x)"
     ],
@@ -78,6 +92,7 @@
       "<rootDir>/Example/",
       "<rootDir>/lib/"
     ],
+    "setupFilesAfterEnv": ["<rootDir>/src/__tests__/setup.js"],
     "coverageReporters": [
       "json-summary",
       "text",
