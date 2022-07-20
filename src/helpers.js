@@ -45,7 +45,7 @@ export const fetchImage = async (src, options) => {
       return false;
     }
   } catch (err) {
-    console.warn('Error fetching source, falling back to initials', err);
+    // console.warn('Error fetching source, falling back to initials', err);
     return false;
   }
 };
