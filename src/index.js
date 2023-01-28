@@ -60,7 +60,8 @@ const UserAvatar = (props) => {
       });
       return () => controller.abort();
     } else {
-      setInner(<TextAvatar textColor={textColor} size={size} name={name} />);
+      // eslint-disable-next-line max-len
+      setInner(<TextAvatar textColor={textColor} size={size} name={name} textStyle={textStyle} />);
     }
   }, [textColor, size, name, component, imageStyle, src]);
 

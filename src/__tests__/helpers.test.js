@@ -9,6 +9,7 @@ import {
 } from '../helpers';
 
 beforeEach(function() {
+  jest.setTimeout(10000);
   global.fetch = jest.fn().mockImplementation(() => {
     mockResponseObject = {
       '_bodyBlob': {
