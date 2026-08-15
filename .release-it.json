@@ -1,0 +1,19 @@
+{
+  "git": {
+    "commitMessage": "chore: release ${version}",
+    "tagName": "v${version}",
+    "requireBranch": "master"
+  },
+  "npm": {
+    "publish": false
+  },
+  "github": {
+    "release": true
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "angular",
+      "infile": "CHANGELOG.md"
+    }
+  }
+}

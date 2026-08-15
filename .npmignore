@@ -1,0 +1,12 @@
+# Publishing is driven by the "files" allowlist in package.json. This file is a
+# second line of defense to keep dev-only artifacts out of the published tarball.
+__tests__/
+__mocks__/
+__snapshots__/
+*.test.ts
+*.test.tsx
+coverage/
+badges/
+Example/
+.github/
+.husky/

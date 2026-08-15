@@ -1,0 +1,92 @@
+name: Publish
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      npm_tag:
+        description: 'npm dist-tag to publish under'
+        required: false
+        default: latest
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+          cache: npm
+
+      - name: Verify tag matches package.json version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          TAG_VERSION=${GITHUB_REF_NAME#v}
+          if [ "$PKG_VERSION" != "$TAG_VERSION" ]; then
+            echo "::error::Git tag ($TAG_VERSION) does not match package.json version ($PKG_VERSION)"
+            exit 1
+          fi
+          echo "Publishing version $PKG_VERSION"
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run prepack
+      - run: npm pack --dry-run
+
+      - name: Resolve dist-tag
+        id: tag
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "$VERSION" == *-* ]]; then
+            echo "npm_tag=next" >> "$GITHUB_OUTPUT"
+          else
+            echo "npm_tag=${{ github.event.inputs.npm_tag || 'latest' }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish
+        run: npm publish --provenance --access public --tag "${{ steps.tag.outputs.npm_tag }}"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Summary
+        run: |
+          echo "### Published \`react-native-user-avatar@$(node -p "require('./package.json').version")\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "dist-tag: \`${{ steps.tag.outputs.npm_tag }}\` · provenance: enabled" >> "$GITHUB_STEP_SUMMARY"
+
+  verify-publish:
+    name: Verify published package
+    needs: publish
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install and verify entry points
+        run: |
+          sleep 30
+          VERSION=${GITHUB_REF_NAME#v}
+          mkdir -p /tmp/verify && cd /tmp/verify
+          npm init -y >/dev/null 2>&1
+          npm install "react-native-user-avatar@$VERSION" --no-audit --no-fund
+          node -e "
+            const fs = require('fs');
+            const base = 'node_modules/react-native-user-avatar/';
+            const required = ['lib/commonjs/index.js', 'lib/module/index.js', 'lib/typescript/index.d.ts'];
+            for (const f of required) {
+              if (!fs.existsSync(base + f)) { console.error('missing ' + f); process.exit(1); }
+            }
+            console.log('verified', require('react-native-user-avatar/package.json').version);
+          "

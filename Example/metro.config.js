@@ -1,42 +1,23 @@
+// Metro config for the Expo example. Watches the library root so changes to the
+// library source are picked up without a rebuild, and resolves both node_modules
+// trees. See https://docs.expo.dev/guides/monorepos/.
+const { getDefaultConfig } = require('expo/metro-config');
 const path = require('path');
-const fs = require('fs');
-const blacklist = require('metro-config/src/defaults/exclusionList');
-const escape = require('escape-string-regexp');
 
-const root = path.resolve(__dirname, '..');
-const pak = JSON.parse(
-  fs.readFileSync(path.join(root, 'package.json'), 'utf8')
-);
+const projectRoot = __dirname;
+const workspaceRoot = path.resolve(projectRoot, '..');
 
-const modules = [
-  '@babel/runtime',
-  ...Object.keys({
-    ...pak.dependencies,
-    ...pak.peerDependencies,
-  }),
+const config = getDefaultConfig(projectRoot);
+
+config.watchFolders = [workspaceRoot];
+config.resolver.nodeModulesPaths = [
+  path.resolve(projectRoot, 'node_modules'),
+  path.resolve(workspaceRoot, 'node_modules'),
 ];
-
-module.exports = {
-  projectRoot: __dirname,
-  watchFolders: [root],
-
-  resolver: {
-    blacklistRE: blacklist([
-      new RegExp(`^${escape(path.join(root, 'node_modules'))}\\/.*$`),
-    ]),
-
-    extraNodeModules: modules.reduce((acc, name) => {
-      acc[name] = path.join(__dirname, 'node_modules', name);
-      return acc;
-    }, {}),
-  },
-
-  transformer: {
-    getTransformOptions: async () => ({
-      transform: {
-        experimentalImportSupport: false,
-        inlineRequires: true,
-      },
-    }),
-  },
+// Always resolve react/react-native from the example app to avoid duplicates.
+config.resolver.extraNodeModules = {
+  react: path.resolve(projectRoot, 'node_modules/react'),
+  'react-native': path.resolve(projectRoot, 'node_modules/react-native'),
 };
+
+module.exports = config;

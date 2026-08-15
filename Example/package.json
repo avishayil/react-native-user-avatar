@@ -1,32 +1,26 @@
 {
   "name": "example",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "index.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "^44.0.0",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-native": "0.64.3"
+    "expo": "~57.0.13",
+    "expo-status-bar": "~3.0.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-native": "0.82.1",
+    "react-native-web": "^0.21.0",
+    "react-native-user-avatar": "file:.."
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/runtime": "^7.8.4",
-    "@react-native-community/eslint-config": "^1.1.0",
-    "babel-jest": "^25.1.0",
-    "eslint": "^6.5.1",
-    "jest": "^25.1.0",
-    "metro-react-native-babel-preset": "^0.59.0",
-    "react-test-renderer": "17.0.1",
-    "react-native-web": "0.17.5",
-    "initials": "^3.1.2",
-    "abortcontroller-polyfill": "^1.4.0"
+    "@babel/core": "^7.25.0",
+    "@types/react": "~19.2.0",
+    "typescript": "~5.9.0"
   },
   "private": true
 }
