@@ -1,57 +1,63 @@
 # Contributing to React Native User Avatar
 
-## Development Process
+Thanks for your interest in contributing! This project is maintained in the open on
+GitHub. For a full picture of the architecture and commands, see [CLAUDE.md](./CLAUDE.md).
 
-I am an individual wokring on this project, all the work is public and presented on GitHub.
+## Development workflow
 
-### Development workflow
+1. Fork the repo and create your branch from `master`
+   (see [how to fork a repository](https://help.github.com/articles/fork-a-repo/)).
+2. Run `npm run bootstrap` to install dependencies for the library and the example app.
+3. Make your changes and verify them in the [`Example/`](./Example) app before opening a
+   pull request.
 
-1. Fork the repo and create your branch from `master` (a guide on [how to fork a repository](https://help.github.com/articles/fork-a-repo/)).
-2. Run `yarn bootstrap` to setup the development environment.
-3. Do the changes you want and test them out in the example app before sending a pull request.
+## Commit message convention
 
-### Commit message convention
+We follow the [Conventional Commits](https://www.conventionalcommits.org/en) specification:
 
-We follow the [conventional commits specification](https://www.conventionalcommits.org/en) for commit messages:
+- `fix`: bug fixes, e.g. fixed the custom component rendering.
+- `feat`: new features, e.g. added a prop or capability.
+- `refactor`: code refactor with no behavior change.
+- `docs`: documentation changes.
+- `test`: adding or updating tests.
+- `chore`: tooling changes, e.g. CI configuration.
+- `BREAKING CHANGE`: changes that break existing usage.
 
-* `fix`: bug fixes, e.g. fixed issues with custom component.
-* `feat`: new features, e.g. added a prop or a capability.
-* `refactor`: code refactor, e.g. new folder structure.
-* `docs`: changes into documentation, e.g. add usage example.
-* `test`: adding or updating tests, eg unit, snapshot testing.
-* `chore`: tooling changes, e.g. change travis.yml config.
-* `BREAKING CHANGE`: for changes that break existing usage, e.g. changed usage.
+The `commit-msg` git hook verifies your commit message matches this format.
 
-The built-in pre-commit hooks verify that your commit message matches this format when committing.
+## Linting and tests
 
-### Linting and tests
+We use `typescript` for type-checking, `eslint` for linting/formatting, and `jest` for
+tests. The `pre-commit` hook runs all three. You can also run them manually:
 
-We use `typescript` for type checking, `eslint` for linting and formatting the code, and `jest` for testing. Our pre-commit hooks verify that the linter and tests pass when commiting. You can also run the following commands manually:
+- `npm run typescript` — type-check with `tsc`.
+- `npm run lint` — lint with `eslint`.
+- `npm test` — run tests with `jest` and refresh coverage badges.
 
-* `yarn typescript`: type-check files with `tsc`.
-* `yarn lint`: lint files with `eslint`.
-* `yarn test`: run unit tests with `jest`.
+## Sending a pull request
 
-### Sending a pull request
+- Prefer small pull requests focused on a single change.
+- Make sure `typescript`, `lint`, and all tests pass.
+- Add or update tests for behavior changes.
+- Update the `README.md` props table when you add or change a prop.
+- Follow the pull request template.
 
-When you're sending a pull request:
+## Running the example
 
-* Prefer small pull requests focused on one change.
-* Verify that `typescript`, `eslint` and all tests are passing.
-* Preview the documentation to make sure it looks good.
-* Follow the pull request template when opening a pull request.
-* Update the type definitions for Typescript if you changed an API or added a prop.
+The example app uses [Expo](https://expo.dev/). From the repo root:
 
-### Running the example
+```sh
+npm run example start
+```
 
-The example app uses [Expo](https://expo.io/) for the React Native example. You will need to install the Expo app for [Android](https://play.google.com/store/apps/details?id=host.exp.exponent) and [iOS](https://itunes.apple.com/app/apple-store/id982107779) to start developing.
-
-After you're done, you can run `yarn example start` in the project root (or `expo start` in the `Example/` folder) and scan the QR code to launch it on your device.
+Then open it on a device/simulator via the Expo Go app, or press `w` to run in the browser.
 
 ## Reporting issues
 
-You can report issues on the [bug tracker](https://github.com/avishayil/react-native-user-avatar/issues). Please follow the issue template when opening an issue.
+Report issues on the [bug tracker](https://github.com/avishayil/react-native-user-avatar/issues)
+using the issue templates.
 
 ## License
 
-By contributing to React Native User Avatar, you agree that your contributions will be licensed under its **MIT** license.
+By contributing, you agree that your contributions will be licensed under the project's
+**MIT** license.
