@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "expo": "~57.0.13",
-    "expo-status-bar": "~3.0.0",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
+    "expo-status-bar": "~57.0.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "react-native": "0.82.1",
     "react-native-web": "^0.21.0",
     "react-native-user-avatar": "file:.."
