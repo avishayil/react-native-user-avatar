@@ -1,8 +1,0 @@
-jdk: oraclejdk8
-language: node_js
-node_js:
-  - 10
-
-script:
-  - yarn run lint
-  - yarn run test
