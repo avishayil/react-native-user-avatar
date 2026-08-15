@@ -52,7 +52,7 @@
     "react-native": "*"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^19.6.0",
+    "@commitlint/config-conventional": "^21.2.0",
     "@react-native/babel-preset": "0.76.9",
     "@react-native/eslint-config": "0.76.9",
     "@release-it/conventional-changelog": "^8.0.2",
