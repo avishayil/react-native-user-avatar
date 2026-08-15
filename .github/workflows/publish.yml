@@ -28,6 +28,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: npm
 
+      # npm trusted publishing (OIDC) requires npm >= 11.5.1; Node 22 ships npm 10.
+      - name: Upgrade npm for OIDC trusted publishing
+        run: npm install -g npm@latest
+
       - name: Verify tag matches package.json version
         if: startsWith(github.ref, 'refs/tags/v')
         run: |
@@ -55,10 +59,10 @@ jobs:
             echo "npm_tag=${{ github.event.inputs.npm_tag || 'latest' }}" >> "$GITHUB_OUTPUT"
           fi
 
+      # Authenticated via npm OIDC trusted publishing (no token). Requires a
+      # Trusted Publisher configured on npmjs.com for this repo + workflow.
       - name: Publish
         run: npm publish --provenance --access public --tag "${{ steps.tag.outputs.npm_tag }}"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Summary
         run: |
