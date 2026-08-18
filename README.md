@@ -1,3 +1,9 @@
+<a href="https://avishay.co.il" target="_blank" rel="noopener">
+  <img src=".github/brand/hero.png" alt="Avishay Bar — Security // AI // Engineering. Secure the AI you build, and the AI you run." width="100%" />
+</a>
+
+---
+
 # React Native User Avatar
 
 [![npm version](https://img.shields.io/npm/v/react-native-user-avatar.svg?style=flat-square)](https://www.npmjs.com/package/react-native-user-avatar)
